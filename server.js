@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const dotEnv = require("dotenv")
+const connection = require("./database/connection");
 const cors = require("cors")
 
 dotEnv.config();
@@ -12,6 +13,7 @@ app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
 app.use(cors());
+connection()
 
 app.get("/",(req,res,next)=>{
     res.send("Hello from api")
@@ -30,3 +32,4 @@ app.use((err,req,res,next)=>{
         body : {}
     })
 })
+
