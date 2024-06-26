@@ -15,3 +15,35 @@ module.exports.createProduct = async (req,res) =>{
     }
     return res.status(response.status).send(response)
 }
+
+module.exports.getProducts = async (req,res) => {
+    const response = {}
+    try{
+        const products = await productService.getProducts()
+        response.status = 200
+        response.body = products
+    }catch(err){
+        console.log("Somthing went wrong in product controller while getProducts :",err)
+        response.status = 400
+        response.message = err.message
+        response.body = {}
+    }
+    return res.status(response.status).send(response)
+}
+
+module.exports.getProductById = async (req, res)=>{
+    const response = {}
+    try{
+        const {id} = req.params
+        const product = await productService.getProductById(id)
+        response.status = 200
+        response.body = product
+    }catch(err){
+        console.log("Somthing went wrong in product controller while getProductById :",err)
+        response.status = 400
+        response.message = err.message
+        response.body = {}
+    }
+    return res.status(response.status).send(response)
+}
+
