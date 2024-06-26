@@ -9,3 +9,20 @@ module.exports.createProduct = async (productData) => {
     }
     
 }
+
+module.exports.getProducts = async () =>{
+    try{
+        const products = await Product.find();
+        return products
+    }catch (err){
+        console.log("somthing went wrong while getProducts service :",err)
+    }
+}
+
+module.exports.getProductById = async (id) =>{
+    try{
+        return await Product.findById(id)
+    }catch(err){
+        console.log("Somthing went wrong while getProductById serice :",err)
+    }
+}

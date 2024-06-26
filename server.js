@@ -17,6 +17,8 @@ app.use(cors());
 connection()
 
 //Routers
+app.use('/auth',require('./routes/auth'))
+app.use('/user',require('./routes/user'))
 app.use("/product",require('./routes/productRouters'))
 
 app.listen(PORT,()=>{
@@ -32,6 +34,3 @@ app.use((err,req,res,next)=>{
         body : {}
     })
 })
-
-
-
