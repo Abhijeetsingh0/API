@@ -1,10 +1,10 @@
 const express = require('express');
-const {authenticate} = require('../middlewares/auth')
+const { authenticate } = require('../middlewares/auth');
 
 const router = express.Router();
 
-router.get('/porfile', authenticate, (req,res)=>{
-    res.json({message: `Welcome ${req.user.username}`})
-})
+router.get('/profile', authenticate, (req, res) => {
+  res.json({ message: `Welcome ${req.user.username}`,auth: true });
+});
 
 module.exports = router;

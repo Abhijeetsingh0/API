@@ -27,7 +27,6 @@ const userSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const saltRound = 10
 // Hash the password before saving it to the database
 userSchema.pre('save', async function (next) {
   
