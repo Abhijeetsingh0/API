@@ -10,7 +10,6 @@ const authenticate = async (req, res, next) => {
     }
     try{
         const decodeToken = jwt.verify(token, process.env.SECRET_KEY)
-        console.log(decodeToken)
         const user = await User.findById(decodeToken.emailId);
         if (!user){
             return res.status(404).json({message: 'User not found'})

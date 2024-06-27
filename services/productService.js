@@ -5,7 +5,7 @@ module.exports.createProduct = async (productData) => {
         const product = new Product({name:productData.name,brand:productData.brand,price:productData.price})
         return await product.save();
     }catch(err){
-        console.log("Somthing went wrong while creating product ", err)
+        console.log("somthing went wrong while creating product ", err)
     }
     
 }
@@ -23,15 +23,29 @@ module.exports.getProductById = async (id) =>{
     try{
         return await Product.findById(id)
     }catch(err){
-        console.log("Somthing went wrong while getProductById service :",err)
+
     }
 }
 
 module.exports.deleteProduct = async (id) => {
     try{
-        console.log(id)
         return await Product.deleteOne({_id:id})
     }catch(err){
-        console.log("somthing went wrong while deleteProduct service",err)
+        console.log("somthing went wrong while deleteProduct service :",err)
     }
 }
+
+module.exports.putProduct = async (id, newBody) => {
+    try{
+        console.log(id, newBody)
+        const product = await Product.findByIdAndUpdate(
+            id, 
+            { $set: newBody }, 
+            { new: true, useFindAndModify: false }
+          );
+        console.log(product)
+        return product
+    }catch(err){
+        console.log("somthing went wrong while putProduct service :",err)
+    }
+} 

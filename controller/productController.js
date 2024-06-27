@@ -47,13 +47,6 @@ module.exports.getProductById = async (req, res)=>{
     return res.status(response.status).send(response)
 }
 
-module.exports.deleteProduct = async (req, res) => {
-    const response = {}
-    try{
-        const {id} = req.params
-        const deletedProduct = await productService.deleteProduct(id)
-        response.status = 200
-        response.body = deletedProduct
     }catch(err){
         console.log("Somthing went wrong in product controller while deleteProduct :",err)
         response.status = 400
@@ -61,4 +54,5 @@ module.exports.deleteProduct = async (req, res) => {
         response.body = {}
     }
     return res.status(response.status).send(response)
+}
 }
