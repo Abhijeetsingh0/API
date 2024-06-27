@@ -23,7 +23,7 @@ module.exports.getProductById = async (id) =>{
     try{
         return await Product.findById(id)
     }catch(err){
-        console.log("somthing went wrong while getProductById service :",err)
+
     }
 }
 
