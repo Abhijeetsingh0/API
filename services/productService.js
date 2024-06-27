@@ -7,10 +7,9 @@ module.exports.createProduct = async (productData) => {
     }catch(err){
         console.log("somthing went wrong while creating product ", err)
     }
-    
 }
 
-module.exports.getProducts = async () =>{
+module.exports.getProducts = async () => {
     try{
         const products = await Product.find();
         return products
@@ -19,7 +18,7 @@ module.exports.getProducts = async () =>{
     }
 }
 
-module.exports.getProductById = async (id) =>{
+module.exports.getProductById = async (id) => {
     try{
         return await Product.findById(id)
     }catch(err){
